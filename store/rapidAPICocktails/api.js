@@ -8,9 +8,15 @@ const rapidAPICocktails = axios.create({
     Authorization: `Bearer ${RAPIDAPI_COCKTAILS_TOKEN}`
   }
 })
+function rapidapicocktails_get__read(payload) {
+  return rapidAPICocktails.get(`/`)
+}
 function rapidapicocktails_get_cocktails_list(payload) {
   return rapidAPICocktails.get(`/cocktails`, {
     params: { limit: payload.limit }
   })
 }
-export const apiService = { rapidapicocktails_get_cocktails_list }
+export const apiService = {
+  rapidapicocktails_get__read,
+  rapidapicocktails_get_cocktails_list
+}
